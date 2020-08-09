@@ -7,7 +7,7 @@ pipeline {
 				withAWS(region:'us-east-1', credentials:'aws_credentials') {
 					sh '''
 						eksctl create cluster \
-						--name OCSClusterV1 \
+						--name ClusterOCS \
 						--version 1.17 \
 						--region us-east-1 \
 						--nodegroup-name standard-workers \
@@ -24,7 +24,7 @@ pipeline {
 			steps {
 				withAWS(region:'us-east-1', credentials:'aws_credentials') {
 					sh '''
-						aws --region us-east-1 eks update-kubeconfig --name OCSClusterV1
+						aws --region us-east-1 eks update-kubeconfig --name ClusterOCS
 					'''
 				}
 			}
